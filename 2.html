@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Counting down to Nikki's special day</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Google Fonts for the clean modern typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&display=swap"
+        rel="stylesheet">
+
+    <style>
+        :root {
+            --bg-cream: #FDFBF4;
+            --text-dark: #2A2522;
+            --pink-accent: #E55B73;
+            --pink-btn: #EE6C85;
+            --card-shadow: 0 10px 25px rgba(165, 143, 124, 0.12);
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg-cream);
+            color: var(--text-dark);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .wrapper {
+            width: 100%;
+            max-width: 410px;
+            /* Perfectly targeted for standard mobile screens */
+            text-align: center;
+            padding: 20px 10px;
+        }
+
+        .main-heading {
+            font-weight: 800;
+            font-size: 2.15rem;
+            line-height: 1.25;
+            letter-spacing: -0.5px;
+            color: var(--text-dark);
+        }
+
+        .name-highlight {
+            color: var(--pink-accent);
+        }
+
+        .cake-emoji {
+            display: inline-block;
+            font-size: 1.8rem;
+            vertical-align: middle;
+            margin-left: 2px;
+        }
+
+        .sub-message {
+            font-size: 0.88rem;
+            font-weight: 500;
+            opacity: 0.85;
+            margin-top: 15px;
+            margin-bottom: 35px;
+        }
+
+        /* Countdown Styling */
+        .countdown-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 35px;
+        }
+
+        .time-box {
+            background: #FFFFFF;
+            border-radius: 16px;
+            width: 76px;
+            height: 76px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: var(--card-shadow);
+            border: 1px solid rgba(230, 220, 205, 0.3);
+        }
+
+        .time-num {
+            font-size: 2.1rem;
+            font-weight: 700;
+            color: var(--pink-accent);
+            letter-spacing: -0.5px;
+        }
+
+        .colon-separator {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--pink-accent);
+            margin-top: -24px;
+        }
+
+        .labels-container {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-top: -25px;
+            margin-bottom: 40px;
+        }
+
+        .label-box {
+            width: 76px;
+            text-align: center;
+            font-size: 0.68rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #8A817C;
+        }
+
+        /* Footer Text Lines */
+        .announcement-text {
+            color: var(--pink-accent);
+            font-weight: 700;
+            font-size: 0.95rem;
+            line-height: 1.4;
+            max-width: 90%;
+            margin: 0 auto 8px;
+        }
+
+        .magic-text {
+            font-size: 0.85rem;
+            font-weight: 500;
+            opacity: 0.75;
+            margin-bottom: 35px;
+        }
+
+        /* Button Styling */
+        .celebrate-btn {
+            background-color: var(--pink-btn);
+            color: #FFFFFF;
+            border: none;
+            border-radius: 50px;
+            padding: 12px 32px;
+            font-size: 0.95rem;
+            font-weight: 700;
+            box-shadow: 0 8px 20px rgba(238, 108, 133, 0.35);
+            transition: all 0.2s ease;
+        }
+
+        .celebrate-btn:active {
+            transform: scale(0.97);
+            box-shadow: 0 4px 10px rgba(238, 108, 133, 0.2);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="wrapper">
+
+        <!-- Title -->
+        <h1 class="main-heading">
+            Counting down<br>to <span class="name-highlight">Nikki's</span><br>special day <span
+                class="cake-emoji">🎂</span>
+        </h1>
+
+        <!-- Personal message line -->
+        <p class="sub-message">
+            You mean more to me than words can ever explain 💗
+        </p>
+
+        <!-- Countdown Digits -->
+        <div class="countdown-container">
+            <div class="time-box">
+                <span class="time-num" id="hours">00</span>
+            </div>
+            <div class="colon-separator">:</div>
+            <div class="time-box">
+                <span class="time-num" id="minutes">00</span>
+            </div>
+            <div class="colon-separator">:</div>
+            <div class="time-box">
+                <span class="time-num" id="seconds">08</span>
+            </div>
+        </div>
+
+        <!-- Countdown Labels -->
+        <div class="labels-container">
+            <div class="label-box">Hours</div>
+            <!-- Empty space to match the structure under layout colons -->
+            <div style="width: 8px;"></div>
+            <div class="label-box">Minutes</div>
+            <div style="width: 8px;"></div>
+            <div class="label-box">Seconds</div>
+        </div>
+
+        <!-- Promotional / Hype Text -->
+        <p class="announcement-text">
+            Sparkle: A special celebration awaits you at midnight... ✨
+        </p>
+        <p class="magic-text">
+            Something magical is about to unfold... ✨
+        </p>
+
+        <!-- Interactive CTA Button -->
+        <button class="btn celebrate-btn" onclick="celebrateAction()">
+            🎉 Let's Celebrate
+        </button>
+
+    </div>
+
+    <!-- Countdown Logic Script -->
+    <script>
+        // Automatically sets target to midnight tonight to demonstrate live ticking functionality
+        const targetDate = new Date();
+        targetDate.setHours(24, 0, 0, 0);
+
+        /* 
+          NOTE: To set a specific historical or fixed future calendar date, 
+          comment out the code above and uncomment the line below:
+          const targetDate = new Date("December 31, 2026 00:00:00").getTime();
+        */
+
+        function runCountdown() {
+            const now = new Date().getTime();
+            const difference = targetDate - now;
+
+            if (difference <= 0) {
+                document.getElementById("hours").innerText = "00";
+                document.getElementById("minutes").innerText = "00";
+                document.getElementById("seconds").innerText = "00";
+                clearInterval(intervalId);
+                return;
+            }
+
+            // Calculate time metrics (Focusing on Hours, Minutes, Seconds per image layout)
+            const totalHours = Math.floor(difference / (1000 * 60 * 60));
+            const mins = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+            const secs = Math.floor((difference % (1000 * 60)) / 1000);
+
+            // Pad display values with standard leading zeros
+            document.getElementById("hours").innerText = totalHours < 10 ? "0" + totalHours : totalHours;
+            document.getElementById("minutes").innerText = mins < 10 ? "0" + mins : mins;
+            document.getElementById("seconds").innerText = secs < 10 ? "0" + secs : secs;
+        }
+
+        // Initialize tracking interval loop
+        const intervalId = setInterval(runCountdown, 1000);
+        runCountdown();
+
+        function celebrateAction() {
+            alert("💖 The countdown is active! Get ready to celebrate Nikki's day! 💖");
+        }
+    </script>
+
+</body>
+
+</html>
