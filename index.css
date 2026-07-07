@@ -1,61 +1,58 @@
-/* --- Global Styles & Theme --- */
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
+        /* --- Mobile App Optimization --- */
+        html,
         body {
-            background: linear-gradient(135deg, #ffeef8 0%, #ffd6ed 100%);
-            color: #4a4a4a;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 20px;
-            min-height: 100vh;
             overflow-x: hidden;
+            background: linear-gradient(135deg, #ffeef8 0%, #ffd6ed 100%);
+            min-height: 100vh;
+            /* Prevents blue tap highlight box on mobile browsers */
+            -webkit-tap-highlight-color: transparent;
         }
 
-        .container {
-            max-width: 450px;
-            width: 100%;
-            display: flex;
-            flex-direction: column;
-            gap: 30px;
+        /* Soft blurred glass effect for cards */
+        .bg-glass {
+            background: rgba(255, 255, 255, 0.78) !important;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.6) !important;
         }
 
-        /* --- Section Styling (Card wrapper) --- */
-        .section-card {
-            background: rgba(255, 255, 255, 0.75);
-            backdrop-filter: blur(8px);
-            border-radius: 24px;
-            padding: 25px;
-            box-shadow: 0 8px 32px rgba(255, 182, 193, 0.3);
-            text-align: center;
-            border: 1px solid rgba(255, 255, 255, 0.6);
-        }
-
-        /* --- Section 1: Intro & Surprise Box --- */
+        /* Interactive Elements */
         .gift-box {
-            font-size: 50px;
+            font-size: 55px;
             cursor: pointer;
-            transition: transform 0.3s ease;
+            transition: transform 0.2s ease;
             display: inline-block;
-            margin: 15px 0;
         }
-        .gift-box:hover {
-            transform: scale(1.15) rotate(5deg);
+
+        .gift-box:active {
+            transform: scale(0.9);
+            /* Shakes smaller slightly when tapped on mobile */
         }
+
+        /* Smooth CSS Transitions for Surprise Content */
         .birthday-title {
             font-size: 1.8rem;
             color: #d63384;
             margin-bottom: 10px;
         }
+
         .highlight-name {
             color: #b52a67;
             font-weight: bold;
         }
+
+        .story-title {
+            font-size: 1.5rem;
+            color: #4a154b;
+            margin-bottom: 5px;
+        }
+
+        .story-subtitle {
+            font-size: 0.9rem;
+            color: #8c628e;
+            margin-bottom: 20px;
+        }
+
         .surprise-content {
             max-height: 0;
             overflow: hidden;
@@ -63,33 +60,24 @@
             font-style: italic;
             color: #6c757d;
         }
+
         .surprise-content.reveal {
             max-height: 200px;
             margin-top: 15px;
         }
 
-        /* --- Section 2: 3D Flipping Story Cards --- */
-        .story-title {
-            font-size: 1.5rem;
-            color: #4a154b;
-            margin-bottom: 5px;
-        }
-        .story-subtitle {
-            font-size: 0.9rem;
-            color: #8c628e;
-            margin-bottom: 20px;
-        }
+        /* --- Pure CSS Mobile 3D Card Flip --- */
         .grid-container {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 15px;
-            perspective: 1000px; /* Crucial for 3D effect */
+            perspective: 800px;
         }
+
         .flip-card {
             background-color: transparent;
-            height: 150px;
+            height: 145px;
+            /* Perfect height for typical mobile screens */
             cursor: pointer;
         }
+
         .flip-card-inner {
             position: relative;
             width: 100%;
@@ -98,64 +86,36 @@
             transition: transform 0.6s;
             transform-style: preserve-3d;
         }
-        /* When active class is added by JS, flip the card */
+
         .flip-card.flipped .flip-card-inner {
             transform: rotateY(180deg);
         }
-        .card-front, .card-back {
+
+        .card-front,
+        .card-back {
             position: absolute;
             width: 100%;
             height: 100%;
             -webkit-backface-visibility: hidden;
             backface-visibility: hidden;
-            border-radius: 16px;
+            border-radius: 1.25rem;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            padding: 10px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-        }
-        .card-front {
-            background: linear-gradient(135deg, #fff0f6 0%, #ffdeeb 100%);
-            border: 1px solid #ffccd5;
-        }
-        .card-front span {
-            font-size: 28px;
-            margin-bottom: 8px;
-        }
-        .card-front p {
-            font-size: 0.8rem;
-            color: #a37081;
-        }
-        .card-back {
-            background: #fff;
-            transform: rotateY(180deg);
-            border: 1px solid #ffd6ed;
-            font-size: 0.85rem;
-            color: #555;
+            padding: 12px;
         }
 
-        /* --- Section 3: Birthday Letter --- */
-        .letter-heading {
-            font-style: italic;
-            font-family: Georgia, serif;
-            text-align: left;
-            margin-bottom: 15px;
-            color: #333;
+        .card-front {
+            background: linear-gradient(135deg, #fff2f7 0%, #ffdbe9 100%);
+            border: 1px solid #ffccd5;
         }
-        .letter-body {
-            font-family: Georgia, serif;
-            line-height: 1.6;
-            text-align: left;
-            font-size: 0.95rem;
-            color: #444;
-            text-indent: 15px;
-        }
-        .letter-signature {
-            text-align: right;
-            font-family: Georgia, serif;
-            font-style: italic;
-            margin-top: 20px;
-            color: #b52a67;
+
+        .card-back {
+            background: #ffffff;
+            transform: rotateY(180deg);
+            border: 1px solid #ffd6ed;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }

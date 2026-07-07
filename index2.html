@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday!</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+
+    <div class="container">
+
+        <div class="section-card">
+            <p style="color: #d63384; font-size: 0.9rem;">Tap the box to reveal your surprise</p>
+            <div class="gift-box" id="giftBox" onclick="toggleSurprise()">🎁</div>
+            
+            <h1 class="birthday-title">Happy Birthday <span class="highlight-name">Raynoor!</span></h1>
+            
+            <div class="surprise-content" id="surpriseContent">
+                <p>❤️ You are cherished more than words can say. ❤️</p>
+                <p style="margin-top: 10px; font-size: 0.9rem;">May this year bring you endless joy, love, and all the beautiful things you deserve. 🌸</p>
+            </div>
+        </div>
+
+        <div class="section-card">
+            <h2 class="story-title">Our Little Story</h2>
+            <p class="story-subtitle">Flip the cards to reveal ✨</p>
+            
+            <div class="grid-container">
+                <div class="flip-card" onclick="flipCard(this)">
+                    <div class="flip-card-inner">
+                        <div class="card-front">
+                            <span>🎂</span>
+                            <p>Tap to reveal</p>
+                        </div>
+                        <div class="card-back">
+                            <p>The day the world got a little brighter. Happy birthday bestie!</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flip-card" onclick="flipCard(this)">
+                    <div class="flip-card-inner">
+                        <div class="card-front">
+                            <span>🌸</span>
+                            <p>Tap to reveal</p>
+                        </div>
+                        <div class="card-back">
+                            <p>Thank you for always bringing smiles and warmth wherever you go.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flip-card" onclick="flipCard(this)">
+                    <div class="flip-card-inner">
+                        <div class="card-front">
+                            <span>⭐</span>
+                            <p>Tap to reveal</p>
+                        </div>
+                        <div class="card-back">
+                            <p>May all your wildest dreams and goals come true this year.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flip-card" onclick="flipCard(this)">
+                    <div class="flip-card-inner">
+                        <div class="card-front">
+                            <span>🧸</span>
+                            <p>Tap to reveal</p>
+                        </div>
+                        <div class="card-back">
+                            <p>Sending you the biggest, warmest virtual hugs today! 🥰</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section-card" style="background: #ffffff;">
+            <p style="color: #b52a67; font-size: 0.85rem; text-align: left; margin-bottom: 5px; font-weight: bold;">To My Birthday Princess 👑</p>
+            <h3 class="letter-heading">My dearest birthday girl,</h3>
+            <div class="letter-body">
+                <p>Today marks another year of your incredible existence, and I couldn't be more grateful to celebrate it with you. 🌸</p>
+                <br>
+                <p>Happy Birthday to an amazing girl who brings happiness wherever she goes. Your smile brightens every room, and your kindness makes the world a better place. On your special day, I wish you endless joy, good health, success, and all the love your heart can hold.</p>
+            </div>
+            <div class="letter-signature">— Harman</div>
+        </div>
+
+    </div>
+
+    <script>
+        // Toggle the surprise open/close state
+        function toggleSurprise() {
+            const content = document.getElementById('surpriseContent');
+            const gift = document.getElementById('giftBox');
+            
+            content.classList.toggle('reveal');
+            
+            if(content.classList.contains('reveal')) {
+                gift.innerHTML = "📦🔓"; // Change icon when opened
+            } else {
+                gift.innerHTML = "🎁";
+            }
+        }
+
+        // Handle the flipping of the 3D grid cards
+        function flipCard(cardElement) {
+            cardElement.classList.toggle('flipped');
+        }
+    </script>
+</body>
+</html>
