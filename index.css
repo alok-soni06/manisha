@@ -119,3 +119,31 @@
             align-items: center;
             justify-content: center;
         }
+
+        .btn-theme {
+            background: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            color: #b52a67;
+            font-weight: 600;
+            border: 1px solid rgba(255, 182, 193, 0.6);
+            padding: 12px 30px;
+            border-radius: 50px;
+            /* Fully rounded pill shape */
+            box-shadow: 0 4px 15px rgba(255, 182, 193, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        /* Hover and click animations */
+        .btn-theme:hover {
+            background: #ffffff;
+            color: #d63384;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 182, 193, 0.6);
+            border-color: rgba(255, 182, 193, 0.9);
+        }
+
+        .btn-theme:active {
+            transform: translateY(1px);
+            box-shadow: 0 3px 10px rgba(255, 182, 193, 0.4);
+        }
