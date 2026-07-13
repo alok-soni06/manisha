@@ -21,7 +21,7 @@
                     <p class="text-danger small fw-medium mb-1">Tap the box to reveal your surprise</p>
                     <div class="gift-box my-1" id="giftBox" onclick="toggleSurprise()">🎁</div>
 
-                    <h1 class="birthday-title">Happy Birthday <span class="highlight-name">Raynoor!</span></h1>
+                    <h1 class="birthday-title">Happy Birthday <span class="highlight-name">Nikki!</span></h1>
 
                     <div class="surprise-content" id="surpriseContent">
                         <p>❤️ You are cherished more than words can say. ❤️</p>
@@ -101,11 +101,17 @@
                                 </div>
                             </div>
                         </div>
+
+                    </div>
+                    <div>
+                        <button id="surprise-btn1" class="btn flip-card-inner shadow-sm mt-2">
+                            Tap to Reveal Surprise ✨
+                        </button>
                     </div>
                 </div>
             </div>
 
-            <div class="col-6" style="display: none;" id="section-3">
+            <div class="col-12" id="section-3" style="display: none;">
                 <div class="card bg-white border-0 shadow-sm p-4 rounded-4">
                     <p class="small fw-bold mb-2" style="color: #b52a67; font-size: 0.8rem;">To My Birthday Princess
                         👑
@@ -115,24 +121,17 @@
                         girl,</h3>
 
                     <div class="text-dark small"
-                        style="font-family: Georgia, serif; line-height: 1.6; text-align: justify; font-size: 0.88rem;">
-                        <p class="mb-2">Today marks another year of your incredible existence, and I couldn't be
-                            more
-                            grateful to celebrate it with you. 🌸</p>
-                        <p class="m-0">Happy Birthday to an amazing girl who brings happiness wherever she goes.
-                            Your
-                            smile brightens every room, and your kindness makes the world a better place. On your
-                            special day, I wish you endless joy, good health, and all the love your heart can hold.
-                        </p>
+                        style="font-family: Georgia, serif; line-height: 1.6; text-align: justify; font-size: 0.9rem;">
+                        <div id="typewriter-text">
+                        </div>
                     </div>
 
                     <div class="text-end fst-italic mt-3 fw-medium"
                         style="font-family: Georgia, serif; color: #b52a67; font-size: 0.9rem;">
-                        — Harman
+                        — Manisha
                     </div>
                 </div>
             </div>
-
 
         </div>
     </div>
@@ -149,9 +148,44 @@
             sbtn.addEventListener('click', () => {
 
                 sec1.style.display = 'none';
-                sec2.style.display = 'flex';
+                sec2.style.display = 'block';
                 sec3.style.display = 'none';
             })
+
+            sbtn1 = document.getElementById('surprise-btn1');
+
+            sbtn1.addEventListener('click', () => {
+
+                sec1.style.display = 'none';
+                sec2.style.display = 'none';
+                sec3.style.display = 'block';
+
+                setTimeout(() => {
+
+                    const message = "Happiest b'day to u my dearest behenaa";
+
+                    let index = 0;
+                    const speed = 50;
+
+                    function typeWriter() {
+                        if (index < message.length) {
+                            // Check if the next part of the string is a <br> tag
+                            if (message.substring(index, index + 4) === "<br>") {
+                                document.getElementById("typewriter-text").innerHTML += "<br>";
+                                index += 4;
+                            } else {
+                                document.getElementById("typewriter-text").innerHTML += message.charAt(index);
+                                index++;
+                            }
+                            setTimeout(typeWriter, speed);
+                        }
+                    }
+
+                    typeWriter();
+                }, 100)
+
+            })
+
         })
         function toggleSurprise() {
             const content = document.getElementById('surpriseContent');
