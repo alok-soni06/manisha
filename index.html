@@ -37,7 +37,7 @@
                 </div>
             </div>
 
-            <div class="col-12" style="display: none;" id="section-2">
+            <div class="col-12" id="section-2" style="display: none;">
                 <div class="card bg-glass border-0 shadow-sm p-4 text-center rounded-4">
                     <h2 class="story-title">Our Little Story</h2>
                     <p class="story-subtitle">Flip the cards to reveal ✨</p>
@@ -96,7 +96,7 @@
                                     </div>
                                     <div class="card-back shadow-sm">
                                         <p class="small text-dark m-0" style="font-size: 0.8rem; line-height: 1.4;">
-                                            This birthday i need a gift from u 👉🏼👈🏼 a live man</p>
+                                            Jldi se job lg or khub sara paisa kama k meko dena😂</p>
                                     </div>
                                 </div>
                             </div>
@@ -104,9 +104,57 @@
 
                     </div>
                     <div>
-                        <button id="surprise-btn1" class="btn flip-card-inner shadow-sm mt-2">
-                            Tap to Reveal Surprise ✨
+                        <button id="surprise-btn1" class="btn btn-theme shadow-sm mt-2 success-message">
+                            Tap to Reveal Memories ✨
                         </button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="photos_part" class="col-12" style="display: none;">
+                <div class="header-text"><br></div>
+                <div id="instr">Tap the photo to continue ✨</div>
+
+                <div class="stack" id="stack">
+                    <!-- image 1 -->
+                    <div class="polaroid card-1"><img
+                            src="https://res.cloudinary.com/dsrr4tlaj/image/upload/v1783961252/IMG-20260713-WA0023_o2wvwf.jpg"
+                            alt="3">
+                    </div>
+
+                    <div class="polaroid card-2"><img
+                            src="https://res.cloudinary.com/dsrr4tlaj/image/upload/v1783961212/IMG-20260713-WA0017_yu9req.jpg"
+                            alt="1">
+                    </div>
+
+                    <!-- image 2 -->
+                    <div class="polaroid card-3"><img
+                            src="https://res.cloudinary.com/dsrr4tlaj/image/upload/v1783961258/IMG-20260713-WA0019_tosjol.jpg"
+                            alt="2">
+                    </div>
+
+                    <!-- image 3 -->
+                    <div class="polaroid card-4"><img
+                            src="https://res.cloudinary.com/dsrr4tlaj/image/upload/v1783961226/IMG-20260713-WA0018_bcz4ro.jpg"
+                            alt="1">
+                    </div>
+
+                    <!-- image 4 -->
+                    <div class="polaroid card-5"><img
+                            src="https://res.cloudinary.com/dsrr4tlaj/image/upload/v1783961251/IMG-20260713-WA0027_knipgw.jpg"
+                            alt="2">
+                    </div>
+
+                    <!-- image 5 -->
+                    <div class="polaroid card-6"><img
+                            src="https://res.cloudinary.com/dsrr4tlaj/image/upload/v1783961236/IMG-20260713-WA0020_ie1w20.jpg"
+                            alt="3">
+                    </div>
+
+                    <!-- image 6 -->
+                    <div class="polaroid card-7"><img
+                            src="https://res.cloudinary.com/dsrr4tlaj/image/upload/v1783961254/IMG-20260713-WA0024_sucfyv.jpg"
+                            alt="1">
                     </div>
                 </div>
             </div>
@@ -143,6 +191,7 @@
             sec1 = document.getElementById('section-1');
             sec2 = document.getElementById('section-2');
             sec3 = document.getElementById('section-3');
+            photos_part = document.getElementById('photos_part')
             sbtn = document.getElementById('surprise-btn');
 
             sbtn.addEventListener('click', () => {
@@ -156,37 +205,61 @@
 
             sbtn1.addEventListener('click', () => {
 
-                sec1.style.display = 'none';
                 sec2.style.display = 'none';
-                sec3.style.display = 'block';
+                photos_part.style.display = 'flex';
+                stack.addEventListener('click', () => {
+                    const cards = stack.querySelectorAll('.polaroid:not(.swipe-away)');
 
-                setTimeout(() => {
+                    if (cards.length > 1) {
+                        // Swipe the top-most card
+                        const topCard = cards[cards.length - 1];
+                        topCard.classList.add('swipe-away');
+                        count++;
 
-                    const message = "Happiest b'day to u my dearest behenaa🥹🩷..thank u so much for being in my life ❤️..tune muje humesha support kiya mera sath diya ..koi si bhi situation ho kaisi bhi ho tune har situation m mere sath diya hai 🥹..meri bak bak suni , meri overthinking faltu ki bakchodi..chahe koi sath ho na ho tu humesha sath rhi h mere 🥹🫶🏻..tune har bar muje smbhala ..tu meri sabkuch hai 🌍🧿..behen , best friend , support system everything 🥹💗..thank u so much for always being there 🥹✨..once again happiest b'day to u ..tu humesha khush rhe ..teri sari wishes puri ho 🤞🏻..jldi se job lago paisa kamao or mere bills pay karo ..or y mt bhulna i m ur first child to teri property mera pehla hak hai 😌..once again happiest b'day 💓😘..lobb uu soooooooooo much babyyy";
-
-                    let index = 0;
-                    const speed = 50;
-
-                    function typeWriter() {
-                        if (index < message.length) {
-                            // Check if the next part of the string is a <br> tag
-                            if (message.substring(index, index + 4) === "<br>") {
-                                document.getElementById("typewriter-text").innerHTML += "<br>";
-                                index += 4;
-                            } else {
-                                document.getElementById("typewriter-text").innerHTML += message.charAt(index);
-                                index++;
-                            }
-                            setTimeout(typeWriter, speed);
+                        // If we are on the last card, hide the instruction
+                        if (count === 6) {
+                            instr.style.opacity = '0';
                         }
+                    } else if (cards.length === 1) {
+                        // Optional: Action for clicking the very last photo
+                        const topCard = cards[cards.length - 1];
+                        topCard.classList.add('swipe-away');
+                        setTimeout(() => {
+                            const photo_card = document.getElementById('photos_part');
+                            photo_card.style.display = 'none';
+                            sec3.style.display = 'block'
+
+                            setTimeout(() => {
+
+                                const message = "Happiest b'day to u my dearest behenaa🥹🩷..thank u so much for being in my life ❤️..tune muje humesha support kiya mera sath diya ..koi si bhi situation ho kaisi bhi ho tune har situation m mere sath diya hai 🥹..meri bak bak suni , meri overthinking faltu ki bakchodi..chahe koi sath ho na ho tu humesha sath rhi h mere 🥹🫶🏻..tune har bar muje smbhala ..tu meri sabkuch hai 🌍🧿..behen , best friend , support system everything 🥹💗..thank u so much for always being there 🥹✨..once again happiest b'day to u ..tu humesha khush rhe ..teri sari wishes puri ho 🤞🏻..jldi se job lago paisa kamao or mere bills pay karo ..or y mt bhulna i m ur first child to teri property mera pehla hak hai 😌..once again happiest b'day 💓😘..lobb uu soooooooooo much babyyy";
+
+                                let index = 0;
+                                const speed = 50;
+
+                                function typeWriter() {
+                                    if (index < message.length) {
+                                        // Check if the next part of the string is a <br> tag
+                                        if (message.substring(index, index + 4) === "<br>") {
+                                            document.getElementById("typewriter-text").innerHTML += "<br>";
+                                            index += 4;
+                                        } else {
+                                            document.getElementById("typewriter-text").innerHTML += message.charAt(index);
+                                            index++;
+                                        }
+                                        setTimeout(typeWriter, speed);
+                                    }
+                                }
+
+                                typeWriter();
+                            }, 100)
+
+                        }, 300)
                     }
-
-                    typeWriter();
-                }, 100)
-
+                })
             })
 
         })
+
         function toggleSurprise() {
             const content = document.getElementById('surpriseContent');
             const gift = document.getElementById('giftBox');
