@@ -14,6 +14,7 @@
 <body class="d-flex align-items-center justify-content-center py-4">
 
     <div class="container">
+        <audio id="bg-music" src="birthday-song.mp3" loop preload="auto"></audio>
         <div class="row g-3 justify-content-center">
 
             <div class="col-12" id="section-1">
@@ -188,11 +189,26 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
+            function playMusic() {
+                const music = document.getElementById('bg-music');
+                if (music) {
+                    music.play().catch(error => {
+                        console.log("Autoplay prevented by browser:", error);
+                    });
+                }
+            }
+            document.body.addEventListener('click', () => {
+                playMusic();
+            }, { once: true });
+
+            playMusic();
+            
             sec1 = document.getElementById('section-1');
             sec2 = document.getElementById('section-2');
             sec3 = document.getElementById('section-3');
             photos_part = document.getElementById('photos_part')
             sbtn = document.getElementById('surprise-btn');
+            var count = 0
 
             sbtn.addEventListener('click', () => {
 
