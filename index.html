@@ -198,12 +198,42 @@
     <script>
         
         document.addEventListener('DOMContentLoaded', () => {
+            function createFloatingHeart() {
+                const heart = document.createElement('div');
+                heart.innerHTML = '🌸'; // or '❤️', '✨'
+                heart.style.position = 'fixed';
+                heart.style.left = Math.random() * 100 + 'vw';
+                heart.style.bottom = '-20px';
+                heart.style.fontSize = Math.random() * 20 + 10 + 'px';
+                heart.style.opacity = Math.random();
+                heart.style.transition = 'transform 5s linear, opacity 5s linear';
+                heart.style.pointerEvents = 'none';
+                heart.style.zIndex = '0';
+
+                document.body.appendChild(heart);
+
+                setTimeout(() => {
+                    heart.style.transform = `translateY(-100vh) rotate(${Math.random() * 360}deg)`;
+                    heart.style.opacity = '0';
+                }, 100);
+
+                setTimeout(() => heart.remove(), 5000);
+            }
+
+            // Generate a heart every 800ms
+            setInterval(createFloatingHeart, 800);
+
             document.getElementById('start-btn').addEventListener('click', () => {
                 const music = document.getElementById('bg-music');
                 music.play(); // Sound plays instantly without browser block!
 
                 // Hide overlay
                 document.getElementById('start-overlay').style.display = 'none';
+                confetti({
+                    particleCount: 100,
+                    spread: 70,
+                    origin: { y: 0.6 }
+                });
             });
             function playMusic() {
                 const music = document.getElementById('bg-music');
@@ -225,6 +255,11 @@
                 sec1.style.display = 'none';
                 sec2.style.display = 'block';
                 sec3.style.display = 'none';
+                confetti({
+                    particleCount: 100,
+                    spread: 70,
+                    origin: { y: 0.6 }
+                });
             })
 
             sbtn1 = document.getElementById('surprise-btn1');
@@ -233,6 +268,11 @@
 
                 sec2.style.display = 'none';
                 photos_part.style.display = 'flex';
+                confetti({
+                    particleCount: 100,
+                    spread: 70,
+                    origin: { y: 0.6 }
+                });
                 stack.addEventListener('click', () => {
                     const cards = stack.querySelectorAll('.polaroid:not(.swipe-away)');
 
@@ -298,6 +338,7 @@
             cardElement.classList.toggle('flipped');
         }
     </script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
 </body>
 
 </html>
