@@ -14,6 +14,14 @@
 <body class="d-flex align-items-center justify-content-center py-4">
 
     <div class="container">
+        <!-- Splash Overlay -->
+        <div id="start-overlay"
+            style="position: fixed; inset: 0; background: linear-gradient(135deg, #ffeef8 0%, #ffd6ed 100%); z-index: 9999; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 20px;">
+            <h1 style="color: #d63384; font-size: 2rem; margin-bottom: 20px;">A Special Surprise Awaits... 🌸</h1>
+            <button id="start-btn" class="btn btn-theme shadow" style="font-size: 1.2rem; padding: 15px 35px;">
+                Tap to Begin ✨
+            </button>
+        </div>
         <audio id="bg-music" src="birthday-song.mp3" loop preload="auto"></audio>
         <div class="row g-3 justify-content-center">
 
@@ -188,7 +196,15 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/dist/js/bootstrap.bundle.min.js"></script>
 
     <script>
+        
         document.addEventListener('DOMContentLoaded', () => {
+            document.getElementById('start-btn').addEventListener('click', () => {
+                const music = document.getElementById('bg-music');
+                music.play(); // Sound plays instantly without browser block!
+
+                // Hide overlay
+                document.getElementById('start-overlay').style.display = 'none';
+            });
             function playMusic() {
                 const music = document.getElementById('bg-music');
                 if (music) {
@@ -197,12 +213,6 @@
                     });
                 }
             }
-            document.body.addEventListener('click', () => {
-                playMusic();
-            }, { once: true });
-
-            playMusic();
-            
             sec1 = document.getElementById('section-1');
             sec2 = document.getElementById('section-2');
             sec3 = document.getElementById('section-3');
